@@ -1,6 +1,5 @@
-// Best Time to Buy and Sell Stock
-// https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
-
+// Rotate Image
+// https://leetcode.com/problems/rotate-image/
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long
@@ -32,18 +31,35 @@ void solve()
     int n;
     cin>>n;
 
-    int arr[n];
+    vector< vector<int> > matrix;
+
     for(int i=0;i<n;i++)
-        cin>>arr[i];
-    
-    int maxprofit=0, minstock=INT_MAX;
-    
-    for (int i = 0; i < n; i++)
     {
-        if(arr[i] < minstock)
-            minstock=arr[i];
-        maxprofit = max(maxprofit, (arr[i] - minstock));
+        vector<int>a;
+        for(int j=0; j<n; j++ )
+        {
+            int x;
+            cin>>x;
+            a.push_back(x);
+        }
+        matrix.push_back(a);
     }
-    
-    cout<<maxprofit;
+
+    for(int i=0; i<n; i++)
+    {
+        for(int j=i+1; j<n; j++)
+            swap(matrix[i][j],matrix[j][i]);
+        
+    }
+
+    for(int i=0;i<n;i++)
+        reverse(matrix[i].begin(), matrix[i].end());
+
+    for(auto i: matrix)
+    {
+        for(auto j: i)
+            cout<<j<<' ';
+        cout<<"\n";
+    }
+
 }
